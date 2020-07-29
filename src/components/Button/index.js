@@ -1,9 +1,8 @@
 import React from "react";
-
 import { ButtonLink } from "./styles";
 
 function Button() {
-  return <ButtonLink as="a">Tape</ButtonLink>;
+  return <ButtonLink to="/video">Tape</ButtonLink>;
 }
 
 export default Button;

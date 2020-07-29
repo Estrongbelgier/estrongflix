@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const ButtonLink = styled.button`
+export const ButtonLink = styled(Link)`
   color: var(--primary);
   border: 1px solid var(--primary);
   box-sizing: border-box;
@@ -11,13 +12,14 @@ export const ButtonLink = styled.button`
   font-size: 16px;
   outline: none;
   border-radius: 8px;
+  border-top-right-radius: 25px;
   text-decoration: none;
   display: inline-block;
   transition: opacity 0.3s;
 
   &:hover,
   &:focus {
-    opacity: 0.9;
+    opacity: 0.8;
   }
 
   @media (max-width: 800px) {
@@ -34,3 +36,5 @@ export const ButtonLink = styled.button`
     }
   }
 `;
+/* TIP Quando quisermos usar outro componente com o comportameno diferente do que já temos, utilizamos styled(Componente)
+ */
