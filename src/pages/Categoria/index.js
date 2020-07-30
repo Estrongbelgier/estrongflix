@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PageRoot from "../../components/PageRoot";
 import FormField from "../../components/FormField";
+import "./styles.css";
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -40,6 +41,7 @@ function CadastroCategoria() {
         }}
       >
         <FormField
+          classType="input"
           label="Nome da Categoria"
           type="text"
           name="nome"
@@ -48,44 +50,23 @@ function CadastroCategoria() {
         />
 
         <FormField
-          label="Descrição:"
+          classType="input"
+          label="Descrição"
           type="????"
           name="descricao"
           value={values.descricao}
           onChange={handleChange}
         />
-        {/* <div>
-          <label>
-            Descrição:
-            <textarea
-              type="text"
-              value={values.descricao}
-              name="descricao"
-              onChange={handleChange}
-            />
-          </label>
-        </div> */}
 
         <FormField
-          label="Cor"
+          classType="ColorButton"
           type="color"
           name="cor"
           value={values.cor}
           onChange={handleChange}
         />
-        {/* <div>
-          <label>
-            Cor:
-            <input
-              type="color"
-              value={values.cor}
-              name="cor"
-              onChange={handleChange}
-            />
-          </label>
-        </div> */}
 
-        <button>Cadastrar</button>
+        <button className="sumitButton">Cadastrar</button>
       </form>
 
       <ul>

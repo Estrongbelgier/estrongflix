@@ -1,11 +1,19 @@
 import React from "react";
+import "styled-components";
+import { Input } from "@rocketseat/unform";
 
-function FormField({ label, type, name, value, onChange }) {
+function FormField({ classType, label, type, name, value, onChange }) {
   return (
     <div>
       <label>
-        {label}:
-        <input type={type} value={value} name={name} onChange={onChange} />
+        <Input
+          className={classType}
+          placeholder={label}
+          type={type}
+          value={value}
+          name={name}
+          onChange={onChange}
+        />
       </label>
     </div>
   );
