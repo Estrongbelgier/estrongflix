@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageRoot from "../../components/PageRoot";
 import FormField from "../../components/FormField";
@@ -14,10 +14,9 @@ function CadastroCategoria() {
   const [values, setValues] = useState(valoresIniciais);
 
   function setValue(chave, valor) {
-    // chave: nome, descricao, bla, bli
     setValues({
       ...values,
-      [chave]: valor, // nome: 'valor'
+      [chave]: valor,
     });
   }
 
@@ -27,6 +26,20 @@ function CadastroCategoria() {
       infosDoEvento.target.value
     );
   }
+
+  useEffect(() => {
+    if (window.location.href.includes("localhost")) {
+      const URL = "http://localhost:8080/categorias";
+      fetch(URL).then(async (respostaDoServer) => {
+        if (respostaDoServer.ok) {
+          const resposta = await respostaDoServer.json();
+          setCategorias(resposta);
+          return;
+        }
+        throw new Error("Não foi possível pegar os dados");
+      });
+    }
+  }, []);
 
   return (
     <PageRoot>
@@ -41,7 +54,6 @@ function CadastroCategoria() {
         }}
       >
         <FormField
-          classType="input"
           label="Nome da Categoria"
           type="text"
           name="nome"
@@ -50,16 +62,15 @@ function CadastroCategoria() {
         />
 
         <FormField
-          classType="input"
           label="Descrição"
-          type="????"
+          type="textarea"
           name="descricao"
           value={values.descricao}
           onChange={handleChange}
         />
 
-        <FormField
-          classType="ColorButton"
+        <input
+          className="colorButton"
           type="color"
           name="cor"
           value={values.cor}
