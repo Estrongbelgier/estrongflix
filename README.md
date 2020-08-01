@@ -1,6 +1,6 @@
 # estrongflix
 
-[Imgur](https://i.imgur.com/rBJg0tt.png)
+![Imgur](https://i.imgur.com/rBJg0tt.png)
 
 Imersão React da Alura Cursos
 
