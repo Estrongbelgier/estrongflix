@@ -5,8 +5,10 @@
 ## Imersão React by Alura Caelum
 
 ![Imgur](https://i.imgur.com/c4w638X.png)
-Imersão React da Alura Cursos
 
-- Ocorrou do dia 27/07/2020 à 04/08/2020
+Acesse:
+[estronglfix](https://estrongflix.vercel.app/video)
+
+- Ocorreu do dia 27/07/2020 à 04/08/2020.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
