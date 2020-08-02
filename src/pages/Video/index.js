@@ -23,17 +23,17 @@ function CadastroVideo() {
     });
   }, []);
 
-  function onSubmitHandler(event) {
+  async function onSubmitHandler(event) {
     event.preventDefault();
 
     const { id } = categorias.find(
       (categoria) => categoria.titulo === values.categoria
     );
 
-    Videos.insert({
-      titulo: values,
-      url: values.url,
+    await Videos.insert({
       categoriaId: id,
+      titulo: values.titulo,
+      url: values.url,
     })
       .then(() => {
         clearForm(values);

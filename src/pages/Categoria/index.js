@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SubPageRoot from "../../components/SubPageRoot";
 import FormField from "../../components/FormField";
 import CategoryColorButton from "../../components/CategoryColorButton";
 import Categoria from "../../repositories/categorias";
 import useForm from "../../hooks/useForm";
-import { toast, ToastContainer } from "react-toastify";
 
 import "./styles.css";
 
 function CadastroCategoria() {
+  const history = useHistory();
   const valoresIniciais = {
     titulo: "",
     descricao: "",
@@ -27,6 +27,7 @@ function CadastroCategoria() {
     await Categoria.insert(values)
       .then((resposta) => {
         clearForm(valoresIniciais);
+        history.push("/");
       })
       .catch((error) => {
         console.log(error);

@@ -28,14 +28,10 @@
       }
     },
     {
-      "id": 4,
-      "titulo": "PUBG",
-      "descricao": "Jogadas do PUBG.",
-      "cor": "#9cd33b",
-      "link_extra": {
-        "text": "Algumas jogadas PUBG",
-        "url": "https://PUBG.com/"
-      }
+      "titulo": "teste",
+      "descricao": "TESTE",
+      "cor": "#e42525",
+      "id": 4
     }
   ],
   "videos": [
@@ -92,16 +88,6 @@
       "categoriaId": 3,
       "titulo": "It's High Noon #01",
       "url": "https://www.youtube.com/watch?v=ObgYbDohnOk"
-    },
-    {
-      "titulo": {
-        "titulo": "Fica deitado",
-        "url": "https://www.youtube.com/watch?v=JTznORRRzKc",
-        "categoria": "COD:Warzone"
-      },
-      "url": "https://www.youtube.com/watch?v=JTznORRRzKc",
-      "categoriaId": 2,
-      "id": 10
     }
   ]
 }
