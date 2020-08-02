@@ -74,11 +74,3 @@ export const Input = styled.input`
     );
   }}
 `;
-
-export const ColorButton = styled.input`
-  background: none;
-  border-radius: 4px;
-  border: 1px solid #ff8a65;
-  transition: 0.8s;
-  width: 25%;
-`;

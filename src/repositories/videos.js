@@ -1,24 +1,23 @@
 import config from "../config";
 
-const URL_VIDEOS = `${config.URL_BACKEND_TOP}/videos`;
+const URL_VIDEOS = `${config.API_URL}/videos`;
 
-function create(objetoDoVideo) {
-  return fetch(`${URL_VIDEOS}?_embed=videos`, {
+function insert(values) {
+  const requestOptions = {
     method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(objetoDoVideo),
-  }).then(async (respostaDoServidor) => {
-    if (respostaDoServidor.ok) {
-      const resposta = await respostaDoServidor.json();
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(values),
+  };
+
+  return fetch(URL_VIDEOS, requestOptions).then(async (response) => {
+    if (response.ok) {
+      const resposta = await response.json();
       return resposta;
     }
-
-    throw new Error("Não foi possível cadastrar os dados :(");
+    throw new Error("Não foi possível carregar os dados do servidor :(");
   });
 }
 
 export default {
-  create,
+  insert,
 };
