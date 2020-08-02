@@ -1,16 +1,16 @@
 import React from "react";
-import Menu from "../Menu";
+import SubMenu from "../SubMenu";
 import Footer from "../Footer";
 import { Main } from "./styles";
 
-function PageRoot({ children, paddingAll }) {
+function SubPageRoot({ children, paddingAll }) {
   return (
     <>
-      <Menu />
+      <SubMenu />
       <Main paddingAll={paddingAll}>{children}</Main>
       <Footer />
     </>
   );
 }
 
-export default PageRoot;
+export default SubPageRoot;

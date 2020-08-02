@@ -1,101 +1,88 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PageRoot from "../../components/PageRoot";
+import SubPageRoot from "../../components/SubPageRoot";
 import FormField from "../../components/FormField";
+import CategoryColorButton from "../../components/CategoryColorButton";
+import Categoria from "../../repositories/categorias";
+import useForm from "../../hooks/useForm";
+import { toast, ToastContainer } from "react-toastify";
+
+import "./styles.css";
 
 function CadastroCategoria() {
   const valoresIniciais = {
-    nome: "",
+    titulo: "",
     descricao: "",
     cor: "",
   };
+
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
+
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
 
-  function setValue(chave, valor) {
-    // chave: nome, descricao, bla, bli
-    setValues({
-      ...values,
-      [chave]: valor, // nome: 'valor'
+  async function onSubmitHandler(event) {
+    event.preventDefault();
+    setCategorias([...categorias, values]);
+
+    await Categoria.insert(values)
+      .then((resposta) => {
+        clearForm(valoresIniciais);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    const URL_TOP = window.location.hostname.includes("localhost")
+      ? "http://localhost:8080/categorias"
+      : "https://devsoutinhoflix.herokuapp.com/categorias";
+    fetch(URL_TOP).then(async (respostaDoServidor) => {
+      const resposta = await respostaDoServidor.json();
+      setCategorias([...resposta]);
     });
-  }
-
-  function handleChange(infosDoEvento) {
-    setValue(
-      infosDoEvento.target.getAttribute("name"),
-      infosDoEvento.target.value
-    );
-  }
+  }, []);
 
   return (
-    <PageRoot>
-      <h1>Cadastro de Categoria: {values.nome}</h1>
+    <SubPageRoot>
+      <h1>Cadastro de Categoria: {values.titulo}</h1>
 
-      <form
-        onSubmit={function handleSubmit(infosDoEvento) {
-          infosDoEvento.preventDefault();
-          setCategorias([...categorias, values]);
-
-          setValues(valoresIniciais);
-        }}
-      >
+      <form onSubmit={onSubmitHandler}>
         <FormField
-          label="Nome da Categoria"
-          type="text"
-          name="nome"
-          value={values.nome}
+          id="titulo"
+          label="Título da categoria"
+          value={values.titulo}
           onChange={handleChange}
         />
 
         <FormField
-          label="Descrição:"
-          type="????"
-          name="descricao"
+          id="descricao"
+          label="Descrição"
+          type="textarea"
           value={values.descricao}
           onChange={handleChange}
         />
-        {/* <div>
-          <label>
-            Descrição:
-            <textarea
-              type="text"
-              value={values.descricao}
-              name="descricao"
-              onChange={handleChange}
-            />
-          </label>
-        </div> */}
+        <h4>Escolha a cor! </h4>
 
-        <FormField
-          label="Cor"
+        <CategoryColorButton
+          id="cor"
           type="color"
-          name="cor"
+          label=""
           value={values.cor}
           onChange={handleChange}
         />
-        {/* <div>
-          <label>
-            Cor:
-            <input
-              type="color"
-              value={values.cor}
-              name="cor"
-              onChange={handleChange}
-            />
-          </label>
-        </div> */}
 
-        <button>Cadastrar</button>
+        <button className="sumitButton">Cadastrar</button>
       </form>
 
       <ul>
-        {categorias.map((categoria, indice) => {
-          return <li key={`${categoria}${indice}`}>{categoria.nome}</li>;
-        })}
+        {categorias.map((categoria) => (
+          <li key={`${categoria.id}`}>{categoria.titulo}</li>
+        ))}
       </ul>
 
       <Link to="/">Ir para home</Link>
-    </PageRoot>
+    </SubPageRoot>
   );
 }
 

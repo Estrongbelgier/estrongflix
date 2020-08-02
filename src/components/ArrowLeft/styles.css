@@ -1,0 +1,5 @@
+.Arrow {
+  color: var(--primary);
+  font-size: 60px;
+  cursor: pointer;
+}
