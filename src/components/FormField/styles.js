@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const Label = styled.label``;
 
 Label.Text = styled.span`
-  color: #e5e5e5;
+  color: var(--mainText);
   height: 57px;
   position: absolute;
   top: 0;

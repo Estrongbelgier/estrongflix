@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PageRoot from "../../components/PageRoot";
+import SubPageRoot from "../../components/SubPageRoot";
 import FormField from "../../components/FormField";
 import CategoryColorButton from "../../components/CategoryColorButton";
 import Categoria from "../../repositories/categorias";
@@ -44,11 +44,8 @@ function CadastroCategoria() {
   }, []);
 
   return (
-    <PageRoot>
-      <h1>
-        Cadastro de Categoria:
-        {values.titulo}
-      </h1>
+    <SubPageRoot>
+      <h1>Cadastro de Categoria: {values.titulo}</h1>
 
       <form onSubmit={onSubmitHandler}>
         <FormField
@@ -77,22 +74,7 @@ function CadastroCategoria() {
 
         <button className="sumitButton">Cadastrar</button>
       </form>
-      <button
-        onClick={() =>
-          toast.success("Wow so easy!", {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: 1,
-          })
-        }
-      >
-        teste
-      </button>
-      <ToastContainer />
+
       <ul>
         {categorias.map((categoria) => (
           <li key={`${categoria.id}`}>{categoria.titulo}</li>
@@ -100,7 +82,7 @@ function CadastroCategoria() {
       </ul>
 
       <Link to="/">Ir para home</Link>
-    </PageRoot>
+    </SubPageRoot>
   );
 }
 

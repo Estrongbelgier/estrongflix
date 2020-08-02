@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import PageRoot from "../../components/PageRoot";
+import SubPageRoot from "../../components/SubPageRoot";
 import useForm from "../../hooks/useForm";
 import FormField from "../../components/FormField";
 import Videos from "../../repositories/videos";
@@ -45,7 +45,7 @@ function CadastroVideo() {
   }
 
   return (
-    <PageRoot>
+    <SubPageRoot>
       <h1>Cadastro de Video</h1>
 
       <form onSubmit={onSubmitHandler}>
@@ -80,7 +80,7 @@ function CadastroVideo() {
       <br />
 
       <Link to="/categoria">Cadastrar Categoria</Link>
-    </PageRoot>
+    </SubPageRoot>
   );
 }
 
