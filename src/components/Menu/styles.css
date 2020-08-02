@@ -8,8 +8,8 @@
 }
 
 .Menu {
-  width: 100%;
-  height: 94px;
+  width: 80%;
+  height: 25px;
   z-index: 100;
   /*TIP aqui onde muda o tamanho*/
   display: flex;
