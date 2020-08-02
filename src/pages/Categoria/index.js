@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import PageRoot from "../../components/PageRoot";
 import FormField from "../../components/FormField";
 import CategoryColorButton from "../../components/CategoryColorButton";
-import categoriasRepository from "../../repositories/categorias";
+import Categoria from "../../repositories/categorias";
 import useForm from "../../hooks/useForm";
+import { toast, ToastContainer } from "react-toastify";
+
 import "./styles.css";
 
 function CadastroCategoria() {
@@ -18,14 +20,12 @@ function CadastroCategoria() {
 
   const [categorias, setCategorias] = useState([]);
 
-  function onSubmitHandler(event) {
+  async function onSubmitHandler(event) {
     event.preventDefault();
     setCategorias([...categorias, values]);
 
-    categoriasRepository
-      .insert(values)
+    await Categoria.insert(values)
       .then((resposta) => {
-        console.log(resposta);
         clearForm(valoresIniciais);
       })
       .catch((error) => {
@@ -77,7 +77,22 @@ function CadastroCategoria() {
 
         <button className="sumitButton">Cadastrar</button>
       </form>
-
+      <button
+        onClick={() =>
+          toast.success("Wow so easy!", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: 1,
+          })
+        }
+      >
+        teste
+      </button>
+      <ToastContainer />
       <ul>
         {categorias.map((categoria) => (
           <li key={`${categoria.id}`}>{categoria.titulo}</li>
