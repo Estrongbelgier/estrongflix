@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import BannerMain from "../../components/BannerMain";
 import Carousel from "../../components/Carousel";
-import PageRoot from "../../components/PageRoot";
 import categoriasRepository from "../../repositories/categorias";
+import PageRoot from "../../components/PageRoot";
 import Loading from "../../components/Loading";
 import { Container } from "./styles";
 function Home() {

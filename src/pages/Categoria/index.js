@@ -3,8 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import SubPageRoot from "../../components/SubPageRoot";
 import FormField from "../../components/FormField";
 import CategoryColorButton from "../../components/CategoryColorButton";
-import Categoria from "../../repositories/categorias";
 import useForm from "../../hooks/useForm";
+import Categoria from "../../repositories/categorias";
 
 import "./styles.css";
 
